@@ -8,13 +8,14 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev
 
 # Set the working directory
-WORKDIR /app
+WORKDIR /opt
 
 # Download and install MAFFT
-RUN wget https://mafft.cbrc.jp/alignment/software/mafft-7.475-with-extensions-src.tgz && \
-    tar -xvf mafft-7.475-with-extensions-src.tgz && \
-    cd mafft-7.475-with-extensions/core && \
-    make install
+RUN wget https://mafft.cbrc.jp/alignment/software/mafft-7.525-with-extensions-src.tgz 
+RUN tar -xvf mafft-7.525-with-extensions-src.tgz 
+
+WORKDIR /opt/mafft-7.525-with-extensions/core
+RUN make install
 
 RUN mafft --version
 
