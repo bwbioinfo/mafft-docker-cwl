@@ -14,11 +14,8 @@ WORKDIR /app
 RUN wget https://mafft.cbrc.jp/alignment/software/mafft-7.475-with-extensions-src.tgz && \
     tar -xvf mafft-7.475-with-extensions-src.tgz && \
     cd mafft-7.475-with-extensions/core && \
-    make && \
-    cp mafft /usr/local/bin
+    make install
 
-# Set the entrypoint
-ENTRYPOINT ["mafft"]
+RUN mafft --version
 
-# Set the default command
-CMD ["--help"]
+CMD [ "mafft" ]
